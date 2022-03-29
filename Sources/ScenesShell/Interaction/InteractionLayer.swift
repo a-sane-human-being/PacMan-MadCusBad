@@ -7,21 +7,67 @@ import Scenes
  */
 
 class InteractionLayer : Layer {
-    let ball = Ball()
-    let leftPaddle = Paddle(position:.left)
-    let rightPaddle = Paddle(position:.right)
+    // let ball = Ball()
+    // let leftPaddle = Paddle(position:.left)
+    // let rightPaddle = Paddle(position:.right)
+    let wall = Walls()
 
+    let player = Player()
+
+    let coin = Coins()
+    
     var enableHitTesting = false
+
 
     init() {
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Interaction")
         
         // We insert our RenderableEntities in the constructor
-        insert(entity:ball, at:.front)
+        // insert(entity:ball, at:.front)
+        insert(entity:player, at:.front)
+
+        insert(entity:coin, at:.back)
+        
+        insert(entity:wall, at:.back)
+
+       
     }
 
-    override func postCalculate(canvas:Canvas) {
+    func touchingWall() {
+        for rectangle in wall.levelRectangles{
+            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsRight){
+                player.direction = 0
+                player.player.center += Point(x:5, y:0)
+            }
+            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsLeft){
+                player.direction = 0
+                player.player.center += Point(x:-5, y:0)
+            }
+            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsBottom){
+                player.direction = 0
+                player.player.center += Point(x:0, y:5)
+            }
+            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsTop){
+                player.direction = 0
+                player.player.center += Point(x:0, y:-5)
+            }
+        }
+    }
+
+    
+    func touchingCoin() {
+        for i in 0...coin.coins.count-1{
+            if player.player.boundingRect().containment(target:coin.coins[i].0.boundingRect()).contains(.containedFully){
+                coin.coins[i].1 = false
+            }
+        }
+    }
+    override func postCalculate(canvas:Canvas){
+        touchingWall()
+        touchingCoin()
+    }
+    /* override func postCalculate(canvas:Canvas) {
         if enableHitTesting {
             let leftPaddleBoundingRect = leftPaddle.boundingRect()
             let rightPaddleBoundingRect = rightPaddle.boundingRect()
@@ -42,4 +88,8 @@ class InteractionLayer : Layer {
             }
         }
     }
+     */
+
+    
+     
 }

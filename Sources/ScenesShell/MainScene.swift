@@ -33,7 +33,10 @@ class MainScene : Scene {
         insert(layer:foregroundLayer, at:.front)
     }
 
-    func addPoint(to side:Position) {
-        foregroundLayer.addPoint(to:side)
+    /*
+     func addPoint(to side:Position) {
+             foregroundLayer.addPoint(to:side)
     }
+    
+     */
 }

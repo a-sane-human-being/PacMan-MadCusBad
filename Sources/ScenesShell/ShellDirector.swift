@@ -17,6 +17,6 @@ class ShellDirector : Director {
      Generally, anything over 30 fps will lag
      */
     override func framesPerSecond() -> Int {
-        return 20
+        return 30
     }
 }

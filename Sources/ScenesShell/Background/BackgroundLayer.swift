@@ -16,6 +16,6 @@ class BackgroundLayer : Layer {
         
         // We insert our RenderableEntities in the constructor
         insert(entity:background, at:.back)
-        insert(entity:net, at:.front)
+        // insert(entity:net, at:.front)
     }
 }
