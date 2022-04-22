@@ -13,7 +13,7 @@ class Background : RenderableEntity {
     let audio : Audio 
     
     var didAudio = false
-    
+    //trolololololo
     init() {
         // Initialize Objects
         fillStyle = FillStyle(color:Color(.black))
