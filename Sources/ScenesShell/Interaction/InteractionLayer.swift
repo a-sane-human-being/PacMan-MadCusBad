@@ -36,19 +36,19 @@ class InteractionLayer : Layer {
 
     func touchingWall() {
         for rectangle in wall.levelRectangles{
-            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsRight){
+            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsRight) && rectangle.rect.containment(target:player.player.boundingRect()).contains(.contact){
                 player.direction = 0
                 player.player.center += Point(x:5, y:0)
             }
-            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsLeft){
+            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsLeft) && rectangle.rect.containment(target:player.player.boundingRect()).contains(.contact){
                 player.direction = 0
                 player.player.center += Point(x:-5, y:0)
             }
-            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsBottom){
+            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsBottom) && rectangle.rect.containment(target:player.player.boundingRect()).contains(.contact){
                 player.direction = 0
                 player.player.center += Point(x:0, y:5)
             }
-            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsTop){
+            if rectangle.rect.containment(target:player.player.boundingRect()).contains(.overlapsTop) && rectangle.rect.containment(target:player.player.boundingRect()).contains(.contact){
                 player.direction = 0
                 player.player.center += Point(x:0, y:-5)
             }
@@ -58,7 +58,7 @@ class InteractionLayer : Layer {
     
     func touchingCoin() {
         for i in 0...coin.coins.count-1{
-            if player.player.boundingRect().containment(target:coin.coins[i].0.boundingRect()).contains(.containedFully){
+            if player.player.boundingRect().containment(target:coin.coins[i].0.boundingRect()).contains(.contact){
                 coin.coins[i].1 = false
             }
         }

@@ -7,6 +7,7 @@ class Walls : RenderableEntity {
     let levelLeft:Rectangle
     let levelRight:Rectangle
     let levelBottom:Rectangle
+    let levelWall1:Rectangle
 
     let levelFill:FillStyle
 
@@ -20,6 +21,7 @@ class Walls : RenderableEntity {
         levelLeft = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelRight = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
         levelBottom = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
+        levelWall1 = Rectangle(rect:Rect.zero, fillMode:.fillAndStroke)
 
         levelFill = FillStyle(color:Color(.blue))
         levelStroke = StrokeStyle(color:Color(.blue))
@@ -42,6 +44,9 @@ class Walls : RenderableEntity {
         
         levelBottom.rect = Rect(topLeft:Point(x:50, y:canvasSize.height - 60), size:Size(width:canvasSize.width - 100, height: 10))
         levelRectangles.append(levelBottom)
+
+        levelWall1.rect = Rect(topLeft:Point(x:150, y:60), size:Size(width:10, height: canvasSize.height - 200))
+        levelRectangles.append(levelWall1)
     }
 
     override func render(canvas:Canvas) {

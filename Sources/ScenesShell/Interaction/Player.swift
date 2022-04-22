@@ -21,10 +21,10 @@ class Player : RenderableEntity, KeyDownHandler {
         player = Ellipse(center:Point.zero, radiusX:20, radiusY:20, fillMode:.fillAndStroke)
 
         //Key Objects
-        upKey = "w"
-        downKey = "s"
-        leftKey = "a"
-        rightKey = "d"
+        upKey = "ArrowUp"
+        downKey = "ArrowDown"
+        leftKey = "ArrowLeft"
+        rightKey = "ArrowRight"
         
         
     }
